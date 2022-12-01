@@ -12,19 +12,19 @@ import math
 class Player:
     def __init__(this, game):
         this.game = game
-        this.x = PLAYER_X
+        this.x = PLAYER_X # Coordenadas desde variables
         this.y = PLAYER_Y
         this.angle = PLAYER_ANG
         this.fire = False
 
-    def gunFire(this, event):
+    def gunFire(this, event): # Accion de disparar con el boton izquierdo
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1 and not this.fire and not this.game.gun.reload:
                 this.game.music.fire.play()
                 this.fire = True
                 this.game.gun.reload = True
 
-    def mov(this):
+    def mov(this): # MOVIMIENTO DEL JUGADOR
         sinA = math.sin(this.angle)
         cosA = math.cos(this.angle)
         dx, dy = 0, 0
@@ -46,7 +46,7 @@ class Player:
             dx += -speedSN
             dy += speedCN
 
-        this.collision(dx, dy)
+        this.collision(dx, dy) # Check de colisiones
 
         """
         if keys[pygame.K_LEFT]:
@@ -60,7 +60,7 @@ class Player:
     def walls(this, x, y):
         return (x, y) not in this.game.MAP.world
 
-    def collision(this, dx, dy):
+    def collision(this, dx, dy): # Manejar colisiones
         scale = PLAYER_SZ / this.game.delta
         if this.walls(int(this.x + dx * scale), int(this.y)):
             this.x += dx
@@ -74,7 +74,7 @@ class Player:
         pygame.draw.circle(this.game.SCREEN, 'green',
                            (this.x * 100, this.y * 100), 15)
 
-    def mouse(this):
+    def mouse(this): # Movimiento con mouse
         mX, mY = pygame.mouse.get_pos()
         if mX < LEFT_BORDER or mX > RIGHT_BORDER:
             pygame.mouse.set_pos([WIDTH_HF, HEIGH_HF])
@@ -82,10 +82,11 @@ class Player:
         this.rel = max(-MOVEMENT, min(MOVEMENT, this.rel))
         this.angle += this.rel * SENSITIVITY * this.game.delta
 
-    def update(this):
+    def update(this): # Actualizar
         this.mov()
         this.mouse()
 
+    # Propiedades del jugador para usar en el futuro    
     @property
     def pos(this):
         return this.x, this.y
