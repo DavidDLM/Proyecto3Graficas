@@ -9,7 +9,7 @@ import math
 import numpy as np
 from variables import *
 
-
+# ALGORITMO RAYCASTING
 class Raycasting:
     def __init__(this, game):
         this.game = game
@@ -45,10 +45,10 @@ class Raycasting:
         # Clr
         this.rcResult = []
 
-        # Angle XY
+        # Angulo XY
         angX, angY = this.game.player.pos
 
-        # Player position XY
+        # Player posicion XY
         mapX, mapY = this.game.player.map_pos
 
         vertTXT = 1
@@ -94,7 +94,7 @@ class Raycasting:
                 vertY += dy
                 vertDepth += deltaDepth
 
-            # Depth, texture offset
+            # Depth, offset de texturas para que no se vean raras
             if vertDepth < horDepth:
                 depth, txt = vertDepth, vertTXT
                 vertY %= 1
@@ -114,14 +114,14 @@ class Raycasting:
             # Depth bug
             depth *= np.cos(this.game.player.angle - startingAngle)
 
-            # 3D projection
+            # 3D proyeccion
             projHeight = DISTANCE / (depth + 0.0001)
 
-            # 3D projection
+            # 3D proyeccion
             # pygame.draw.rect(this.game.SCREEN, clr, (r * SCALE,
             #                 HEIGH_HF - projHeight // 2, SCALE, projHeight))
 
-            # RcResult
+            # Resultado de raycasting
             this.rcResult.append((depth, projHeight, txt, offset))
 
             startingAngle += DELTA_ANG
