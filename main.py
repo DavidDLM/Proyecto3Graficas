@@ -70,7 +70,7 @@ class raycastingGame:
                 sys.exit(0)
             this.player.gunFire(event) # Click izquierdo dispara
 
-    def run(this):
+    def run(this): # Corre la funcion update principal, que contiene las demas
         while True:
             this.checkE()
             this.update()
