@@ -8,8 +8,9 @@
 from sprites import *
 
 
-class Gun(AnimatedSprite):
-    def __init__(this, game, path='models/sprites/animated/gun/1.png', scale=3, time=90): # Hereda de AnimatedSprite
+class Gun(AnimatedSprite): # Animar arma
+    # Hereda de AnimatedSprite
+    def __init__(this, game, path='models/sprites/animated/gun/1.png', scale=3, time=90): 
         super().__init__(game=game, path=path, scale=scale, time=time)
         this.imgs = deque(
             [pygame.transform.smoothscale(img, (this.image.get_width() * scale, this.image.get_height() * scale))
@@ -20,7 +21,7 @@ class Gun(AnimatedSprite):
         this.reload = False
         this.frames = 0
 
-    def shot(this):
+    def shot(this): # Funcion de disparo, cambiando si dispara o no para la variable reload
         if this.reload:
             this.game.player.fire = False
             if this.trigger:
