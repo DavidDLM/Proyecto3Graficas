@@ -1,6 +1,6 @@
 # Proyecto3Graficas
 Movimiendo con WASD y mouse
-Disparo con click izquierdo
+Disparo con click izquierdo.
 FPS en el borde superior de la pantalla porque 
 ```
 fps = str(int(timer.get_fps()))
