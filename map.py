@@ -8,8 +8,8 @@ import pygame
 import sys
 import numpy as np
 
-MAPS = 16
-floor = False
+MAPS = 16 # Tamano del mapa
+floor = False # Identificar paredes y piso
 MAP = [
     [1,     1,     1,     1,     1,     1,     1,     1,
         1,     1,     1,     1,     1,     1,     1,     1],
@@ -45,7 +45,7 @@ class Map:
                 if v:
                     this.world[(i, j)] = v
 
-    def drawMap(this):
+    def drawMap(this): # Dibujar mapa segun MAP
         """
         for r in range(8):
             # Loop columnas
