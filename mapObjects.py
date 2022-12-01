@@ -6,16 +6,16 @@
 
 from sprites import *
 
-
+# ANADIR OBJETOS MAS SENCILLAMENTE
 class mapObjects:
     def __init__(this, game):
         this.game = game
-        this.collection = []
+        this.collection = [] # Lista de objetos en el mapa
         this.spritePath = 'models/sprites/'
         this.animSpritePath = 'models/sprites/animated/'
         addObject = this.addObject
 
-        # Mapa
+        # Mapa de objetos
         addObject(Sprite(game))
         addObject(AnimatedSprite(game))
         addObject(AnimatedSprite(game, pos=(7, 1.5)))
@@ -33,5 +33,5 @@ class mapObjects:
     def update(this):
         [sprite.update() for sprite in this.collection]
 
-    def addObject(this, sprite):
+    def addObject(this, sprite): # Anadir objeto a la lista de objetos
         this.collection.append(sprite)
