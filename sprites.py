@@ -17,7 +17,7 @@ class Sprite:
         this.game = game
         this.player = game.player
         this.x, this.y = pos
-        this.image = pygame.image.load(path).convert_alpha()
+        this.image = pygame.image.load(path).convert_alpha() # Cargar sprite
         this.IM_WIDTH = this.image.get_width()
         this.IM_HF = this.image.get_width() // 2
         this.IMAGE_RAT = this.IM_WIDTH / this.image.get_height()
@@ -26,7 +26,7 @@ class Sprite:
         this.SPRITE_SCL = scale
         this.SPRITE_HTSH = shift
 
-    def getProjection(this):
+    def getProjection(this): # Proyeccion de los sprites, y dejarlos en un lugar sin moverse
         proj = DISTANCE / this.normDist * this.SPRITE_SCL
         projW, projH = proj * this.IMAGE_RAT, proj
 
@@ -79,20 +79,20 @@ class AnimatedSprite(Sprite):
         this.compareTime()
         this.animate(this.imgs)
 
-    def animate(this, imgs):
+    def animate(this, imgs): # Animar rotando imagenes
         if this.trigger:
             imgs.rotate(-1)
             this.image = imgs[0]
 
     def compareTime(this):
         this.trigger = False
-        # Compare prev and curr time
+        # Comparar prev y curr time
         currTime = pygame.time.get_ticks()
         if currTime - this.prevTime > this.time:
             this.prevTime = currTime
             this.trigger = True
 
-    def getImgs(this, path):
+    def getImgs(this, path): # Obtener imagenes a usar con los paths para las animaciones
         imgs = deque()
         for file in os.listdir(path):
             if os.path.isfile(os.path.join(path, file)):
