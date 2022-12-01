@@ -6,14 +6,14 @@
 
 import numpy as np
 
-# Resolution
+# Resolucion
 HEIGHT, WIDTH = 900, 1600
 WIDTH_HF = WIDTH // 2
 HEIGH_HF = HEIGHT // 2
 FPS = 30
 PIXEL = 10
 MAPS = 8
-# Var
+# Variables del jugador
 PLAYER_X = 1.5
 PLAYER_Y = 5
 PLAYER_ANG = 0
@@ -24,7 +24,7 @@ SENSITIVITY = 0.0003
 MOVEMENT = 40
 LEFT_BORDER = 100
 RIGHT_BORDER = WIDTH - LEFT_BORDER
-# Data
+# Datos de performance
 FOV = np.pi / 3
 FOV_HF = FOV/2
 CASTED_RAYS = WIDTH // 2
@@ -34,7 +34,7 @@ STEP_ANG = FOV / CASTED_RAYS
 SCALE = WIDTH // CASTED_RAYS
 MAX_DEPTH = 20
 DISTANCE = WIDTH_HF / np.tan(FOV_HF)
-# Texture
+# Texturas
 TEXTURE_SZ = 256
 TEXTURE_HF = TEXTURE_SZ // 2
 FLOOR_CLR = (105, 105, 105)
