@@ -8,7 +8,7 @@
 import pygame
 import sys
 import numpy as np
-
+# IMPORTAR LAS CLASES
 from variables import *
 from map import *
 from player import *
@@ -22,18 +22,21 @@ from gun import *
 
 class raycastingGame:
     def __init__(this):
+        
         ###########################
         pygame.init()
         pygame.mouse.set_visible(False)
         ###########################
-        this.SCREEN = pygame.display.set_mode((WIDTH, HEIGHT)) # inicia la surface
+        
+        this.SCREEN = pygame.display.set_mode((WIDTH, HEIGHT)) # Inicia la surface
         # pygame.display.set_caption("Raycasting")
         # timer
         this.TIMER = pygame.time.Clock() # Para los FPS
         this.delta = 1
         this.newGame()
-
-    def newGame(this): # Inicializa las funciones de las clases
+       
+    # Inicializa las funciones de las clases
+    def newGame(this): 
         this.MAP = Map(this)
         this.player = Player(this)
         this.renderer = Renderer(this)
@@ -43,10 +46,10 @@ class raycastingGame:
         this.objmap = mapObjects(this)
         this.gun = Gun(this)
         this.music = Music(this)
-        pygame.mixer.music.play(-1)
+        pygame.mixer.music.play(-1) # Tocar musica de fondo siempre
 
     def update(this): # Actualiza
-        # Actualiza
+        # Actualiza con las funciones update de las clases
         this.player.update()
         this.raycasting.update()
         this.objmap.update()
@@ -54,13 +57,13 @@ class raycastingGame:
         # this.sprite.update()
         # this.animSprite.update()
         pygame.display.flip()
-        # set FPS
+        # Set FPS
         this.delta = this.TIMER.tick(45)
         pygame.display.set_caption(f'{this.TIMER.get_fps() :.1f}') # Imprime contador de FPS en el borde superior
 
     def drawScreen(this): # Crea la escena
-        this.renderer.draw()
-        this.gun.drawGun()
+        this.renderer.draw() 
+        this.gun.drawGun() # Dibuja arma al centro de pantalla
 
     def checkE(this):
         # Quit pygame
@@ -72,7 +75,7 @@ class raycastingGame:
 
     def run(this): # Corre la funcion update principal, que contiene las demas
         while True:
-            this.checkE()
+            this.checkE() # Check evento
             this.update()
             this.drawScreen()
 
