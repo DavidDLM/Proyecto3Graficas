@@ -33,7 +33,7 @@ class Renderer:
                          key=lambda t: t[0], reverse=True)
         for depth, image, pos in objects:
             this.SCREEN.blit(image, pos)
-
+    # Funcion estatica para obtener el tamano de texturas
     @staticmethod
     def getTXT(path, res=(TEXTURE_SZ, TEXTURE_SZ)):
         txt = pygame.image.load(path).convert_alpha()
