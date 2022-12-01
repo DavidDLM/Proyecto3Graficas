@@ -26,14 +26,14 @@ class raycastingGame:
         pygame.init()
         pygame.mouse.set_visible(False)
         ###########################
-        this.SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
+        this.SCREEN = pygame.display.set_mode((WIDTH, HEIGHT)) # inicia la surface
         # pygame.display.set_caption("Raycasting")
         # timer
-        this.TIMER = pygame.time.Clock()
+        this.TIMER = pygame.time.Clock() # Para los FPS
         this.delta = 1
         this.newGame()
 
-    def newGame(this):
+    def newGame(this): # Inicializa las funciones de las clases
         this.MAP = Map(this)
         this.player = Player(this)
         this.renderer = Renderer(this)
@@ -45,8 +45,8 @@ class raycastingGame:
         this.music = Music(this)
         pygame.mixer.music.play(-1)
 
-    def update(this):
-        # Update
+    def update(this): # Actualiza
+        # Actualiza
         this.player.update()
         this.raycasting.update()
         this.objmap.update()
@@ -56,9 +56,9 @@ class raycastingGame:
         pygame.display.flip()
         # set FPS
         this.delta = this.TIMER.tick(45)
-        pygame.display.set_caption(f'{this.TIMER.get_fps() :.1f}')
+        pygame.display.set_caption(f'{this.TIMER.get_fps() :.1f}') # Imprime contador de FPS en el borde superior
 
-    def drawScreen(this):
+    def drawScreen(this): # Crea la escena
         this.renderer.draw()
         this.gun.drawGun()
 
@@ -68,7 +68,7 @@ class raycastingGame:
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit(0)
-            this.player.gunFire(event)
+            this.player.gunFire(event) # Click izquierdo dispara
 
     def run(this):
         while True:
